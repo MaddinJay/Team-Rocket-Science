@@ -1,8 +1,21 @@
+<<<<<<< HEAD
 # Übersicht Time-Tracking Martin Jonen
 
 Woche Status
 
 KW 
+=======
+# Overview
+## Martin
+| **Weeks**  | #1   | #2 | #3 | #4 | #5 | #6 | #7 | #8 | done  |
+|------------|------|----|----|----|----|----|----|----|---|
+| **Status** | :white_check_mark: |    |    |    |    |    |    |    |   |
+
+## Mateusz
+| **Weeks**  | #1   | #2 | #3 | #4 | #5 | #6 | #7 | #8 | done  |
+|------------|------|----|----|----|----|----|----|----|---|
+| **Status** |  |    |    |    |    |    |    |    |   |
+>>>>>>> 0f4d24e0b7671525c39e32d02273bc5b6b293f70
 
 # Week 1
 
@@ -12,4 +25,4 @@ Aufgrund der Abwesenheit von Mateusz habe ich mit einer ersten Lösungsvisualisi
 
 ## Session 1
 
-Upload erfolgt der Source-Änderungen. Arbeitsschritte sind in MIRO dokumentiert.
+Upload erfolgt der Source-Änderungen. Arbeitsschritte sind in MIRO dokumentiert.#
