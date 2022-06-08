@@ -9,7 +9,7 @@ KW
 ## Martin
 | **Weeks**  | #1   | #2 | #3 | #4 | #5 | #6 | #7 | #8 | done  |
 |------------|------|----|----|----|----|----|----|----|---|
-| **Status** | :white_check_mark: |    |    |    |    |    |    |    |   |
+| **Status** | :white_check_mark: |KW 23| KW 26 | KW 27 | KW 28 | KW 29 | KW 30 | KW 31 |   |
 
 ## Mateusz
 | **Weeks**  | #1   | #2 | #3 | #4 | #5 | #6 | #7 | #8 | done  |
