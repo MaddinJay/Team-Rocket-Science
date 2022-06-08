@@ -25,4 +25,8 @@ Aufgrund der Abwesenheit von Mateusz habe ich mit einer ersten Lösungsvisualisi
 
 ## Session 1
 
-Upload erfolgt der Source-Änderungen. Arbeitsschritte sind in MIRO dokumentiert.#
+Upload erfolgt der Source-Änderungen. Arbeitsschritte sind in MIRO dokumentiert.
+
+## Session 2
+
+Einarbeitung der Issues von Damir. Nach Input von Damir Fokus auf Domain Modell gewechselt. 
