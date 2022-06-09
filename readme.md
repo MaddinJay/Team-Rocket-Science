@@ -30,3 +30,7 @@ Upload erfolgt der Source-Änderungen. Arbeitsschritte sind in MIRO dokumentiert
 ## Session 2
 
 Einarbeitung der Issues von Damir. Nach Input von Damir Fokus auf Domain Modell gewechselt. 
+
+## Session 3
+
+Skizzierung Walking Skeleton. Slicing in "Adapter Note inkl. DAO"
