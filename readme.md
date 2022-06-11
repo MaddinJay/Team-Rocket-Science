@@ -7,15 +7,22 @@ KW
 =======
 # Overview
 ## Martin
+Folgende Tabelle wird durch Christian und Damir gepflegt...
 | **Weeks**  | #1   | #2 | #3 | #4 | #5 | #6 | #7 | #8 | done  |
 |------------|------|----|----|----|----|----|----|----|---|
-| **Status** | :white_check_mark: |KW 23| KW 26 | KW 27 | KW 28 | KW 29 | KW 30 | KW 31 |   |
+| **Status** | :white_check_mark: |  |  |  |  |  |  |  |   |
+
+**Arbeitswochen Martin:**
+KW22, KW23, KW26, KW27, KW28, KW29, KW30, KW31
 
 ## Mateusz
+Folgende Tabelle wird durch Christian und Damir gepflegt...
 | **Weeks**  | #1   | #2 | #3 | #4 | #5 | #6 | #7 | #8 | done  |
 |------------|------|----|----|----|----|----|----|----|---|
 | **Status** |  |    |    |    |    |    |    |    |   |
->>>>>>> 0f4d24e0b7671525c39e32d02273bc5b6b293f70
+
+**Arbeitswochen Mateusz:**
+TBD
 
 # Week 1
 
