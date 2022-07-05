@@ -41,3 +41,7 @@ Einarbeitung der Issues von Damir. Nach Input von Damir Fokus auf Domain Modell 
 ## Session 3
 
 Skizzierung Walking Skeleton. Slicing in "Adapter Note inkl. DAO"
+
+# Week 3
+
+Ich habe mit dem Slicing weitergemacht. Da ich weiterhin kein SAP System zur Verfügung habe, beschäftige ich mich vorerst mit der Modellierung und dem Design und versuche, dass Slicing konsequenter zu berücksichtigen. 
