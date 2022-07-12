@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Übersicht Time-Tracking Martin Jonen
 
 Woche Status
