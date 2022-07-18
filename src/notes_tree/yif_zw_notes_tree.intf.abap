@@ -3,6 +3,6 @@ INTERFACE yif_zw_notes_tree
   TYPES: tt_items TYPE STANDARD TABLE OF mtreeitm WITH DEFAULT KEY.
 
   "! Create the Notes-Tree-Object of the Zettelchen-Wirtschaft GUI
-  METHODS create.
+  METHODS create_tree.
 
 ENDINTERFACE.
