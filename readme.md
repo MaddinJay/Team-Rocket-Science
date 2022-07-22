@@ -36,3 +36,4 @@ Skizzierung Walking Skeleton. Slicing in "Adapter Note inkl. DAO"
 # Week 3
 
 Ich habe mit dem Slicing weitergemacht. Da ich weiterhin kein SAP System zur Verfügung habe, beschäftige ich mich vorerst mit der Modellierung und dem Design und versuche, dass Slicing konsequenter zu berücksichtigen. 
+Mit dem Überblick, wie die Domain ausschauen könnte, mache ich mich nun an die Programmierung eines Prototyps, um die Integration der Domain in das MVC-Konstrukt zu prüfen und um dem Kunden eine erste Ansicht bieten zu können.
