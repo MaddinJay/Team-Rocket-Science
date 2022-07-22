@@ -4,7 +4,7 @@ CLASS ltc_note DEFINITION FINAL FOR TESTING
 
   PRIVATE SECTION.
     DATA:
-      mo_cut      TYPE REF TO yif_note,
+      mo_cut      TYPE REF TO yif_zw_note,
       mo_note_dao TYPE REF TO yif_note_dao.
     METHODS:
       setup,
@@ -25,11 +25,12 @@ CLASS ltc_note IMPLEMENTATION.
 
   METHOD get_uuid.
     cl_abap_unit_assert=>assert_equals(
-        exp = '12345678901234560000000000000000'
+        exp = '1234567890123456'
         act = mo_cut->get_uuid( ) ).
   ENDMETHOD.
 
   METHOD get_title.
+    ##TODO " Get-Methode für Mock angepasst
     cl_abap_testdouble=>configure_call( mo_note_dao )->returning( 'This is a title' ).
     mo_note_dao->get_title( ).
     cl_abap_unit_assert=>assert_equals(

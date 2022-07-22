@@ -3,7 +3,7 @@ CLASS ycl_note_dao DEFINITION
   CREATE PUBLIC .
 
   PUBLIC SECTION.
-    INTERFACES: yif_zw_note_dao.
+    INTERFACES: yif_note_dao.
   PRIVATE SECTION.
 ENDCLASS.
 
@@ -11,11 +11,15 @@ ENDCLASS.
 
 CLASS ycl_note_dao IMPLEMENTATION.
 
-  METHOD yif_zw_note_dao~get_body.
+  METHOD yif_note_dao~get_body.
 
   ENDMETHOD.
 
-  METHOD yif_zw_note_dao~get_title.
+  METHOD yif_note_dao~get_title.
+
+  ENDMETHOD.
+
+  METHOD yif_note_dao~get_uuid.
 
   ENDMETHOD.
 

@@ -1,6 +1,7 @@
 INTERFACE yif_zw_get_notes
   PUBLIC .
   TYPES: BEGIN OF ts_relations,
+           uuid   TYPE yif_zw_note=>ty_uuid,
            node   TYPE tv_nodekey,
            father TYPE tv_nodekey,
          END OF ts_relations,
