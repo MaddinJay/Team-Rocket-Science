@@ -11,8 +11,4 @@ INTERFACE yif_zw_gui_controller
   "! Create the Notes Tree of the "Zettelchen-Wirtschaft GUI"
   METHODS create_notes_tree.
 
-  METHODS get_relations RETURNING VALUE(rt_relations) TYPE tt_relations.
-
-  METHODS get_notes     RETURNING VALUE(rt_notes) TYPE tt_notes.
-
 ENDINTERFACE.

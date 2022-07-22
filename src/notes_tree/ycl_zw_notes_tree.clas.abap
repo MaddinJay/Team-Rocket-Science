@@ -18,20 +18,18 @@ CLASS ycl_zw_notes_tree DEFINITION PUBLIC CREATE PUBLIC .
     METHODS create_initial_gui_column_tree.
     METHODS build_hierarchy_header RETURNING VALUE(rs_hierarchy_header) TYPE treev_hhdr.
     METHODS build_costum_container RETURNING VALUE(ro_custom_container) TYPE REF TO cl_gui_custom_container.
-    METHODS add_nodes_and_items.
-    METHODS build_node_table
-      RETURNING
-        VALUE(rt_nodes) TYPE treev_ntab.
-    METHODS build_item_table
-      RETURNING
-        VALUE(rt_items) TYPE yif_zw_notes_tree=>tt_items.
+    METHODS add_nodes_and_items    IMPORTING io_notes TYPE REF TO yif_zw_get_notes.
+    METHODS build_node_table        IMPORTING io_notes        TYPE REF TO yif_zw_get_notes
+                                    RETURNING VALUE(rt_nodes) TYPE treev_ntab.
+    METHODS build_item_table     IMPORTING io_notes        TYPE REF TO yif_zw_get_notes
+                                 RETURNING VALUE(rt_items) TYPE yif_zw_notes_tree=>tt_items.
 ENDCLASS.
 
 CLASS ycl_zw_notes_tree IMPLEMENTATION.
 
   METHOD yif_zw_notes_tree~create_tree.
     create_initial_gui_column_tree( ).
-    add_nodes_and_items( ).
+    add_nodes_and_items( io_notes ).
   ENDMETHOD.
 
   METHOD create_initial_gui_column_tree.
@@ -55,14 +53,14 @@ CLASS ycl_zw_notes_tree IMPLEMENTATION.
   METHOD add_nodes_and_items.
     mo_gui_column_tree->add_nodes_and_items(
       EXPORTING
-        node_table                     = build_node_table( )
-        item_table                     = build_item_table( )
+        node_table                     = build_node_table( io_notes )
+        item_table                     = build_item_table( io_notes )
         item_table_structure_name      = mc_item_tab_structure ).
   ENDMETHOD.
 
   METHOD build_node_table.
-    DATA(lt_relations) = mo_controller->get_relations( ).
-    DATA(lt_notes)     = mo_controller->get_notes( ).
+    DATA(lt_relations) = io_notes->get_relations( ).
+    DATA(lt_notes)     = io_notes->get_notes( ).
 
     DATA: ls_node TYPE treev_node.
 
