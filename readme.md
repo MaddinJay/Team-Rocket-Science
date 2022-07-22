@@ -12,16 +12,8 @@ Folgende Tabelle wird durch Christian und Damir gepflegt...
 | **Status** | :white_check_mark: | :white_check_mark: |  |  |  |  |  |  |   |
 
 **Arbeitswochen Martin:**
-KW22, KW23, KW27, KW28, KW29, KW30, KW31, KW32
+KW22, KW23, KW29, KW30, KW31, KW32, KW33, KW34
 
-## Mateusz
-Folgende Tabelle wird durch Christian und Damir gepflegt...
-| **Weeks**  | #1   | #2 | #3 | #4 | #5 | #6 | #7 | #8 | done  |
-|------------|------|----|----|----|----|----|----|----|---|
-| **Status** |  |    |    |    |    |    |    |    |   |
-
-**Arbeitswochen Mateusz:**
-TBD
 
 # Week 1
 
