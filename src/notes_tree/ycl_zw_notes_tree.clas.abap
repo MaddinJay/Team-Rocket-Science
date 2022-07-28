@@ -1,10 +1,15 @@
-CLASS ycl_zw_notes_tree DEFINITION PUBLIC CREATE PUBLIC .
+CLASS ycl_zw_notes_tree DEFINITION
+  PUBLIC
+  CREATE PUBLIC .
 
   PUBLIC SECTION.
-    INTERFACES: yif_zw_notes_tree.
 
-    METHODS: constructor IMPORTING io_controller TYPE REF TO ycl_zw_gui_controller OPTIONAL.
+    INTERFACES yif_zw_notes_tree .
 
+    METHODS constructor
+      IMPORTING
+        !io_controller TYPE REF TO yif_zw_get_notes .
+  PROTECTED SECTION.
   PRIVATE SECTION.
     TYPES: tt_tree_nodes TYPE STANDARD TABLE OF node_str WITH DEFAULT KEY.
 
@@ -15,7 +20,7 @@ CLASS ycl_zw_notes_tree DEFINITION PUBLIC CREATE PUBLIC .
     CONSTANTS mc_item_tab_structure TYPE x030l-tabname VALUE 'MTREEITM' ##NO_TEXT.
 
     DATA mo_gui_column_tree  TYPE REF TO cl_gui_simple_tree.
-    DATA mo_controller TYPE REF TO yif_zw_gui_controller.
+    DATA mo_nodes TYPE REF TO yif_zw_get_notes.
     DATA mt_tree_nodes TYPE tt_tree_nodes.
     DATA mt_fieldcatalog TYPE lvc_t_fcat.      "Output-Tabl
 
@@ -26,37 +31,13 @@ CLASS ycl_zw_notes_tree DEFINITION PUBLIC CREATE PUBLIC .
 
 
     METHODS build_fieldcatalog.
-    METHODS build_tree_nodes
-      RETURNING
-        VALUE(rt_nodes) TYPE tt_tree_nodes.
+    METHODS build_tree_nodes       RETURNING VALUE(rt_nodes) TYPE tt_tree_nodes.
+    METHODS is_folder              IMPORTING iv_node             TYPE yif_zw_note=>ty_uuid
+                                             it_relations        TYPE yif_zw_get_notes=>tt_relations
+                                   RETURNING VALUE(rv_is_folder) TYPE abap_bool.
 ENDCLASS.
 
 CLASS ycl_zw_notes_tree IMPLEMENTATION.
-
-  METHOD constructor.
-*    mo_controller = io_controller.
-  ENDMETHOD.
-
-  METHOD yif_zw_notes_tree~create_tree.
-    create_initial_gui_column_tree( ).
-  ENDMETHOD.
-
-  METHOD create_initial_gui_column_tree.
-    CREATE OBJECT mo_gui_column_tree
-      EXPORTING
-        parent              = build_costum_container( )
-        node_selection_mode = mo_gui_column_tree->node_sel_mode_single.
-
-    CALL METHOD mo_gui_column_tree->add_nodes
-      EXPORTING
-        node_table           = build_tree_nodes( )
-        table_structure_name = 'NODE_STR'.
-  ENDMETHOD.
-
-  METHOD build_hierarchy_header.
-    rs_hierarchy_header = VALUE #( heading = mc_column_title
-                                   width   = mc_column_width ).
-  ENDMETHOD.
 
   METHOD build_costum_container.
     ro_custom_container = NEW #( container_name = mc_tree_container ).
@@ -71,43 +52,45 @@ CLASS ycl_zw_notes_tree IMPLEMENTATION.
 
   ENDMETHOD.
 
+  METHOD build_hierarchy_header.
+    rs_hierarchy_header = VALUE #( heading = mc_column_title
+                                   width   = mc_column_width ).
+  ENDMETHOD.
 
   METHOD build_tree_nodes.
-    rt_nodes = mt_tree_nodes = VALUE #( ).
+    DATA(lt_relations) = mo_nodes->get_relations( ).
+    DATA(lt_notes)     = mo_nodes->get_notes( ).
 
-    DATA: node TYPE node_str.
+    rt_nodes = VALUE #( FOR <relation> IN lt_relations:
+                        ( node_key = <relation>-uuid
+                          text     = <relation>-node
+                          isfolder = is_folder( iv_node = <relation>-uuid it_relations = lt_relations )
+                          relatkey = <relation>-father ) ).
+  ENDMETHOD.
 
-* node table of the left tree
-    CLEAR node.
-    ##NO_TEXT
-    node-node_key = 'Root'.
-    node-isfolder = 'X'.
-    ##NO_TEXT
-    node-text = 'Texte'.
-    node-dragdropid = ' '.
-    APPEND node TO rt_nodes.
+  METHOD constructor.
+    mo_nodes = io_controller.
+  ENDMETHOD.
 
-    CLEAR node.
-    ##NO_TEXT
-    node-node_key = 'Child1'.
-    ##NO_TEXT
-    node-relatkey = 'Root'.
-    node-relatship = cl_gui_simple_tree=>relat_last_child.
-    ##NO_TEXT
-    node-text = 'DragDrop Text 1'.
-*  node-dragdropid = handle_tree.       " handle of behaviour
-    APPEND node TO rt_nodes.
+  METHOD create_initial_gui_column_tree.
+    CREATE OBJECT mo_gui_column_tree
+      EXPORTING
+        parent              = build_costum_container( )
+        node_selection_mode = mo_gui_column_tree->node_sel_mode_single.
 
-    CLEAR node.
-    ##NO_TEXT
-    node-node_key = 'Child2'.
-    ##NO_TEXT
-    node-relatkey = 'Root'.
-    node-relatship = cl_gui_simple_tree=>relat_last_child.
-    ##NO_TEXT
-    node-text = 'DragDrop Text 2'.
-*  node-dragdropid = handle_tree.       " handle of behaviour
-    APPEND node TO rt_nodes.
+    CALL METHOD mo_gui_column_tree->add_nodes
+      EXPORTING
+        node_table           = build_tree_nodes( )
+        table_structure_name = 'NODE_STR'.
+  ENDMETHOD.
+
+  METHOD yif_zw_notes_tree~create_tree.
+    create_initial_gui_column_tree( ).
+  ENDMETHOD.
+
+  METHOD is_folder.
+    READ TABLE it_relations WITH KEY father = iv_node TRANSPORTING NO FIELDS.
+    rv_is_folder = COND #( WHEN sy-subrc = 0 THEN abap_true ).
   ENDMETHOD.
 
 ENDCLASS.
