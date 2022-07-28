@@ -40,3 +40,4 @@ Mit dem Überblick, wie die Domain ausschauen könnte, mache ich mich nun an die
 Der Prototyp ist noch nicht abgeschlossen. Es fehlt noch die Integration des Trees.
 
 # Week 4
+Ich arbeite weiter am Prototyp und der Integration des MVC Patterns. Ziel der Woche ist es, einen Prototyp mit Baumhierarchy und Anzeige des Titels und den Body-Texts eines Knoten zu visualisieren.
