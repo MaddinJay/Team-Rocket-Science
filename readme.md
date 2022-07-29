@@ -9,7 +9,7 @@ KW
 Folgende Tabelle wird durch Christian und Damir gepflegt...
 | **Weeks**  | #1   | #2 | #3 | #4 | #5 | #6 | #7 | #8 | done  |
 |------------|------|----|----|----|----|----|----|----|---|
-| **Status** | :white_check_mark: | :white_check_mark: | :white_check_mark: |  |  |  |  |  |   |
+| **Status** | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |  |  |  |  |   |
 
 **Arbeitswochen Martin:**
 KW22, KW23, KW29, KW30, KW31, KW32, KW33, KW34
@@ -41,3 +41,4 @@ Der Prototyp ist noch nicht abgeschlossen. Es fehlt noch die Integration des Tre
 
 # Week 4
 Ich arbeite weiter am Prototyp und der Integration des MVC Patterns. Ziel der Woche ist es, einen Prototyp mit Baumhierarchy und Anzeige des Titels und den Body-Texts eines Knoten zu visualisieren.
+Die Visualisierung des "ALV Trees" wurde auf die Klasse cl_gui_simple_tree geändert. Deep Dive in den Simple Tree hat letzendlich zur Visualisierung des Trees geführt. Das Ziel der Visualisierung einer Notiz im Subview auf der rechten Seite konnte nicht umgesetzt werden. Stattdessen wurde die Paketstruktur und die Klassenarchitektur durch Änderung des Namings und Refactorings gesäubert. 
