@@ -3,14 +3,13 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOCLASS>
-    <CLSNAME>YCL_ZW_NOTES_TREE</CLSNAME>
+    <CLSNAME>YCL_ZW_NOTES_LIST</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>ZW Notes Tree</DESCRIPT>
+    <DESCRIPT>ZW Notes</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>
     <UNICODE>X</UNICODE>
-    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
    </VSEOCLASS>
   </asx:values>
  </asx:abap>

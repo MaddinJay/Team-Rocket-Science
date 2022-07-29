@@ -8,7 +8,7 @@ INTERFACE yif_zw_gui_controller
 
          tt_notes     TYPE STANDARD TABLE OF REF TO yif_zw_note WITH DEFAULT KEY.
 
-  "! Create the Notes Tree of the "Zettelchen-Wirtschaft GUI"
-  METHODS create_notes_tree.
+  "! Create the View
+  METHODS create_notes_view.
 
 ENDINTERFACE.

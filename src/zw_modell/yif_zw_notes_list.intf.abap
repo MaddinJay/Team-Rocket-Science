@@ -1,4 +1,4 @@
-INTERFACE yif_zw_get_notes
+INTERFACE yif_zw_notes_list
   PUBLIC .
   TYPES: BEGIN OF ts_relations,
            uuid   TYPE yif_zw_note=>ty_uuid,
