@@ -42,3 +42,8 @@ Der Prototyp ist noch nicht abgeschlossen. Es fehlt noch die Integration des Tre
 # Week 4
 Ich arbeite weiter am Prototyp und der Integration des MVC Patterns. Ziel der Woche ist es, einen Prototyp mit Baumhierarchy und Anzeige des Titels und den Body-Texts eines Knoten zu visualisieren.
 Die Visualisierung des "ALV Trees" wurde auf die Klasse cl_gui_simple_tree geändert. Deep Dive in den Simple Tree hat letzendlich zur Visualisierung des Trees geführt. Das Ziel der Visualisierung einer Notiz im Subview auf der rechten Seite konnte nicht umgesetzt werden. Stattdessen wurde die Paketstruktur und die Klassenarchitektur durch Änderung des Namings und Refactorings gesäubert. 
+
+# Week 5
+Highlights:
+- Einführung Storyboard -> https://www.figma.com/file/Iy0EHwWdhtNeszybt7sknW/Project-Zettelchen-Wirtschaft?node-id=3%3A50
+- Wechsel von Visualisierungstool MIRO auf FIGMA
