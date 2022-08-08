@@ -16,6 +16,7 @@ CLASS ycl_zw_notes_view DEFINITION
 
     DATA mo_gui_tree     TYPE REF TO cl_gui_simple_tree.
     DATA mo_nodes        TYPE REF TO yif_zw_notes_list.
+    DATA mo_application  TYPE REF TO lcl_tree_application.
     DATA mt_tree_nodes   TYPE tt_tree_nodes.
     DATA mt_fieldcatalog TYPE lvc_t_fcat.
 
@@ -30,6 +31,11 @@ CLASS ycl_zw_notes_view DEFINITION
     METHODS add_nodes.
     METHODS get_root_node          RETURNING VALUE(rv_root_node) TYPE tv_nodekey.
     METHODS expand_node.
+    METHODS add_event_handler.
+    METHODS create_event_double_click
+      RETURNING
+        VALUE(rs_event) TYPE cntl_simple_event.
+
 ENDCLASS.
 
 CLASS ycl_zw_notes_view IMPLEMENTATION.
@@ -59,10 +65,12 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
       EXPORTING
         parent              = build_costum_container( )
         node_selection_mode = mo_gui_tree->node_sel_mode_single.
+    mo_application = NEW #( ).
   ENDMETHOD.
 
   METHOD yif_zw_notes_view~create.
     create_initial_gui_column_tree( ).
+    add_event_handler( ).
     add_nodes( ).
     expand_node( ).
   ENDMETHOD.
@@ -89,6 +97,24 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
   METHOD get_root_node.
     DATA(lt_relations) = mo_nodes->get_relations( ).
     rv_root_node = lt_relations[ father = '' ]-uuid.
+  ENDMETHOD.
+
+
+  METHOD add_event_handler.
+    DATA lt_events TYPE cntl_simple_events.
+
+    APPEND create_event_double_click( ) TO lt_events.
+
+    mo_gui_tree->set_registered_events( events = lt_events ).
+    ##TODO " Exception abfangen
+
+    SET HANDLER mo_application->handle_node_double_click FOR mo_gui_tree.
+  ENDMETHOD.
+
+
+  METHOD create_event_double_click.
+    rs_event = VALUE cntl_simple_event( eventid    = cl_gui_simple_tree=>eventid_node_double_click
+                                        appl_event = abap_true ).
   ENDMETHOD.
 
 ENDCLASS.

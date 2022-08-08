@@ -41,6 +41,34 @@
       <RPY_DYFATC>
        <CONT_TYPE>SCREEN</CONT_TYPE>
        <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>NOTE_TITLE</NAME>
+       <TEXT>Test</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>060</COLUMN>
+       <LENGTH>004</LENGTH>
+       <VISLENGTH>004</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>NOTE_BODY</NAME>
+       <TEXT>Body-Text</TEXT>
+       <LINE>003</LINE>
+       <COLUMN>060</COLUMN>
+       <LENGTH>009</LENGTH>
+       <VISLENGTH>009</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>OKCODE</TYPE>
        <TEXT>____________________</TEXT>
        <LENGTH>020</LENGTH>
