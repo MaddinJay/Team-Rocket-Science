@@ -65,7 +65,6 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
       EXPORTING
         parent              = build_costum_container( )
         node_selection_mode = mo_gui_tree->node_sel_mode_single.
-    mo_application = NEW #( ).
   ENDMETHOD.
 
   METHOD yif_zw_notes_view~create.
@@ -108,6 +107,7 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
     mo_gui_tree->set_registered_events( events = lt_events ).
     ##TODO " Exception abfangen
 
+    mo_application = NEW #( mo_nodes ).
     SET HANDLER mo_application->handle_node_double_click FOR mo_gui_tree.
   ENDMETHOD.
 

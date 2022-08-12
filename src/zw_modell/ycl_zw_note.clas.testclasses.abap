@@ -25,14 +25,13 @@ CLASS ltc_note IMPLEMENTATION.
 
   METHOD get_uuid.
     cl_abap_unit_assert=>assert_equals(
-        exp = '1234567890123456'
+        exp = '12345678901234560000000000000000'
         act = mo_cut->get_uuid( ) ).
   ENDMETHOD.
 
   METHOD get_title.
     ##TODO " Get-Methode für Mock angepasst
-    cl_abap_testdouble=>configure_call( mo_note_dao )->returning( 'This is a title' ).
-    mo_note_dao->get_title( ).
+    mo_cut->set_title( iv_title = 'This is a title' ).
     cl_abap_unit_assert=>assert_equals(
         exp = 'This is a title'
         act = mo_cut->get_title( ) ).
