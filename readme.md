@@ -50,3 +50,4 @@ Highlights:
 - Metriken eingeführt in Storyboard
 - Test Coverage eingeführt in Storyboard
 - Einbindung Handler in GUI Tree Class für Absprung von Note in "Subscreen"
+- Einbindung ABAPLint für CodeInspector and Metric Messung
