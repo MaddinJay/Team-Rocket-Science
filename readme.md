@@ -9,7 +9,7 @@ KW
 Folgende Tabelle wird durch Christian und Damir gepflegt...
 | **Weeks**  | #1   | #2 | #3 | #4 | #5 | #6 | #7 | #8 | done  |
 |------------|------|----|----|----|----|----|----|----|---|
-| **Status** | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |  |  |  |  |   |
+| **Status** | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |  |  |  |   |
 
 **Arbeitswochen Martin:**
 KW22, KW23, KW29, KW30, KW31, KW32, KW33, KW34
@@ -47,3 +47,6 @@ Die Visualisierung des "ALV Trees" wurde auf die Klasse cl_gui_simple_tree geän
 Highlights:
 - Einführung Storyboard -> https://www.figma.com/file/Iy0EHwWdhtNeszybt7sknW/Project-Zettelchen-Wirtschaft?node-id=3%3A50
 - Wechsel von Visualisierungstool MIRO auf FIGMA
+- Metriken eingeführt in Storyboard
+- Test Coverage eingeführt in Storyboard
+- Einbindung Handler in GUI Tree Class für Absprung von Note in "Subscreen"
