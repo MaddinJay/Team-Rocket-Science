@@ -51,3 +51,14 @@ Highlights:
 - Test Coverage eingeführt in Storyboard
 - Einbindung Handler in GUI Tree Class für Absprung von Note in "Subscreen"
 - Einbindung ABAPLint für CodeInspector and Metric Messung
+
+# Week 6
+Goals:
+- Integration DB: Get/set DB inkl. Data in DB ← Mock Data
+- Überarbeitung der Types-Interfaces
+- ABAPLint: Zero Errors
+- Einführung CRC Cards
+
+Highlights:
+- DB Table integriert und Filled with Dummy Values
+- DB Table Read in Notes-Lists Klasse integriert
