@@ -44,6 +44,13 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
     mo_nodes = io_controller.
   ENDMETHOD.
 
+  METHOD yif_zw_notes_view~create.
+    create_initial_gui_column_tree( ).
+    add_event_handler( ).
+    add_nodes( ).
+    expand_node( ).
+  ENDMETHOD.
+
   METHOD build_costum_container.
     ro_custom_container = NEW #( container_name = mc_tree_container ).
   ENDMETHOD.
@@ -65,13 +72,6 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
       EXPORTING
         parent              = build_costum_container( )
         node_selection_mode = mo_gui_tree->node_sel_mode_single.
-  ENDMETHOD.
-
-  METHOD yif_zw_notes_view~create.
-    create_initial_gui_column_tree( ).
-    add_event_handler( ).
-    add_nodes( ).
-    expand_node( ).
   ENDMETHOD.
 
   METHOD expand_node.

@@ -12,4 +12,5 @@ INTERFACE yif_zw_note
 
   METHODS set_uuid IMPORTING iv_uuid TYPE yif_note_dao=>ty_uuid.
   METHODS set_title IMPORTING iv_title TYPE yif_note_dao=>ty_title.
+  METHODS set_body  IMPORTING iv_body TYPE yif_note_dao=>ty_body.
 ENDINTERFACE.

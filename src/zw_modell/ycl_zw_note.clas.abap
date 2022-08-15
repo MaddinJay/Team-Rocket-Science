@@ -6,15 +6,15 @@ CLASS ycl_zw_note DEFINITION
     INTERFACES yif_zw_note.
 
     METHODS constructor IMPORTING iv_uuid     TYPE yif_note_dao=>ty_uuid
-                                  io_note_dao TYPE REF TO yif_note_dao OPTIONAL.
+                                  io_note_dao TYPE REF TO yif_zw_note_dao OPTIONAL.
 
   PRIVATE SECTION.
     DATA mv_uuid TYPE yif_note_dao=>ty_uuid.
-    DATA mo_note_dao TYPE REF TO yif_note_dao.
+    DATA mo_note_dao TYPE REF TO yif_zw_note_dao.
     DATA mv_title TYPE yif_note_dao=>ty_title.
+    DATA mv_body TYPE yif_note_dao=>ty_body.
 
     METHODS set_uuid IMPORTING iv_uuid TYPE yif_note_dao=>ty_uuid.
-    METHODS set_note_dao IMPORTING io_note_dao TYPE REF TO yif_note_dao.
 
 ENDCLASS.
 
@@ -22,12 +22,6 @@ CLASS ycl_zw_note IMPLEMENTATION.
 
   METHOD constructor.
     set_uuid( iv_uuid ).
-    set_note_dao( io_note_dao ).
-  ENDMETHOD.
-
-  METHOD set_note_dao.
-    mo_note_dao = COND #( WHEN io_note_dao IS BOUND THEN io_note_dao
-                          ELSE NEW ycl_note_dao( ) ).
   ENDMETHOD.
 
   METHOD set_uuid.
@@ -35,7 +29,7 @@ CLASS ycl_zw_note IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD yif_zw_note~get_body.
-    rv_body = mo_note_dao->get_body( ).
+    rv_body = mv_body.
   ENDMETHOD.
 
   METHOD yif_zw_note~get_title.
@@ -52,6 +46,10 @@ CLASS ycl_zw_note IMPLEMENTATION.
 
   METHOD yif_zw_note~set_uuid.
     mv_uuid = iv_uuid.
+  ENDMETHOD.
+
+  METHOD yif_zw_note~set_body.
+    mv_body = iv_body.
   ENDMETHOD.
 
 ENDCLASS.

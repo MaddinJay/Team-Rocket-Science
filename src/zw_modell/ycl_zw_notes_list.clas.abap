@@ -8,6 +8,7 @@ CLASS ycl_zw_notes_list DEFINITION
 
   PRIVATE SECTION.
     DATA mt_notes TYPE yif_zw_note=>tt_notes.
+    DATA mo_note_dao TYPE REF TO yif_zw_note_dao.
 
 
 ENDCLASS.
@@ -16,17 +17,8 @@ ENDCLASS.
 CLASS ycl_zw_notes_list IMPLEMENTATION.
 
   METHOD constructor.
-    DATA lo_note TYPE REF TO yif_zw_note.
-    lo_note = NEW ycl_zw_note( '100000000000' ).
-    lo_note->set_title( iv_title = 'Root' ).
-
-    lo_note = NEW ycl_zw_note( '200000000000' ).
-    lo_note->set_title( iv_title = 'Folder' ).
-    APPEND lo_note TO mt_notes.
-
-    lo_note = NEW ycl_zw_note( '300000000000' ).
-    lo_note->set_title( iv_title = 'Note' ).
-    APPEND lo_note TO mt_notes.
+    mo_note_dao = NEW ycl_zw_note_dao( ).
+    mt_notes = mo_note_dao->read_notes( ).
   ENDMETHOD.
 
   METHOD yif_zw_notes_list~get_notes.
