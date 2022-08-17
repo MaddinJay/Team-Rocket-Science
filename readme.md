@@ -62,3 +62,4 @@ Goals:
 Highlights:
 - DB Table integriert und Filled with Dummy Values
 - DB Table Read in Notes-Lists Klasse integriert
+- Refactoring Notes List Class: Handling der Relations in View-Class ausgelagert (Nicht Domain relevant)
