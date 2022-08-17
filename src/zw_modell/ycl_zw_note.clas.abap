@@ -9,10 +9,12 @@ CLASS ycl_zw_note DEFINITION
                                   io_note_dao TYPE REF TO yif_zw_note_dao OPTIONAL.
 
   PRIVATE SECTION.
-    DATA mv_uuid TYPE yif_note_dao=>ty_uuid.
     DATA mo_note_dao TYPE REF TO yif_zw_note_dao.
-    DATA mv_title TYPE yif_note_dao=>ty_title.
-    DATA mv_body TYPE yif_note_dao=>ty_body.
+
+    DATA mv_uuid   TYPE yif_note_dao=>ty_uuid.
+    DATA mv_title  TYPE yif_note_dao=>ty_title.
+    DATA mv_body   TYPE yif_note_dao=>ty_body.
+    DATA mv_father TYPE yif_note_dao=>ty_uuid.
 
     METHODS set_uuid IMPORTING iv_uuid TYPE yif_note_dao=>ty_uuid.
 
@@ -50,6 +52,14 @@ CLASS ycl_zw_note IMPLEMENTATION.
 
   METHOD yif_zw_note~set_body.
     mv_body = iv_body.
+  ENDMETHOD.
+
+  METHOD yif_zw_note~get_father.
+    rv_father = mv_father.
+  ENDMETHOD.
+
+  METHOD yif_zw_note~set_father.
+    mv_father = iv_father.
   ENDMETHOD.
 
 ENDCLASS.

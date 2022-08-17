@@ -9,14 +9,14 @@ CLASS ltc_note DEFINITION FINAL FOR TESTING
       setup,
       get_uuid  FOR TESTING,
       get_title FOR TESTING,
-      get_body FOR TESTING.
+      get_body FOR TESTING,
+      get_father FOR TESTING.
 ENDCLASS.
 
 
 CLASS ltc_note IMPLEMENTATION.
 
   METHOD setup.
-
     mo_cut = NEW ycl_zw_note( iv_uuid = '1234567890123456' ).
   ENDMETHOD.
 
@@ -39,6 +39,13 @@ CLASS ltc_note IMPLEMENTATION.
     cl_abap_unit_assert=>assert_equals(
         exp = 'This is a body'
         act = mo_cut->get_body( ) ).
+  ENDMETHOD.
+
+  METHOD get_father.
+    mo_cut->set_father( '123456789012' ).
+    cl_abap_unit_assert=>assert_equals(
+        exp = '12345678901200000000000000000000'
+        act = mo_cut->get_father( ) ).
   ENDMETHOD.
 
 ENDCLASS.

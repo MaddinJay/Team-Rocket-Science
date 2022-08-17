@@ -23,10 +23,9 @@ CLASS ycl_zw_notes_view DEFINITION
     METHODS create_initial_gui_column_tree.
     METHODS build_costum_container RETURNING VALUE(ro_custom_container) TYPE REF TO cl_gui_custom_container.
     METHODS build_tree_nodes       RETURNING VALUE(rt_nodes) TYPE tt_tree_nodes.
-    METHODS is_folder              IMPORTING iv_node             TYPE yif_zw_note=>ty_uuid
-                                             it_relations        TYPE yif_zw_notes_list=>tt_relations
+    METHODS is_folder              IMPORTING iv_father           TYPE yif_note_dao=>ty_uuid
                                    RETURNING VALUE(rv_is_folder) TYPE abap_bool.
-    METHODS determine_relationship IMPORTING iv_father          TYPE tv_nodekey
+    METHODS determine_relationship IMPORTING iv_father          TYPE yif_note_dao=>ty_uuid
                                    RETURNING VALUE(rv_is_child) TYPE int4.
     METHODS add_nodes.
     METHODS get_root_node          RETURNING VALUE(rv_root_node) TYPE tv_nodekey.
@@ -56,15 +55,14 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD build_tree_nodes.
-    DATA(lt_relations) = mo_nodes->get_relations( ).
     DATA(lt_notes)     = mo_nodes->get_notes( ).
 
-    rt_nodes = VALUE #( FOR <relation> IN lt_relations:
-                        ( node_key = <relation>-uuid
-                          text     = <relation>-node
-                          isfolder = is_folder( iv_node = <relation>-uuid it_relations = lt_relations )
-                          relatkey = <relation>-father
-                          relatship = determine_relationship( <relation>-father ) ) ).
+    rt_nodes = VALUE #( FOR <note> IN lt_notes:
+                        ( node_key = <note>->get_uuid( )
+                          text     = <note>->get_title( )
+                          isfolder = is_folder( <note>->get_father( ) )
+                          relatkey = <note>->get_father( )
+                          relatship = determine_relationship( <note>->get_father( ) ) ) ).
   ENDMETHOD.
 
   METHOD create_initial_gui_column_tree.
@@ -79,8 +77,7 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD is_folder.
-    READ TABLE it_relations WITH KEY father = iv_node TRANSPORTING NO FIELDS.
-    rv_is_folder = COND #( WHEN sy-subrc = 0 THEN abap_true ).
+    rv_is_folder = xsdbool( iv_father IS NOT INITIAL ).
   ENDMETHOD.
 
   METHOD determine_relationship.
@@ -94,8 +91,13 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD get_root_node.
-    DATA(lt_relations) = mo_nodes->get_relations( ).
-    rv_root_node = lt_relations[ father = '' ]-uuid.
+    DATA(lt_notes) = mo_nodes->get_notes( ).
+    LOOP AT lt_notes INTO DATA(lo_note).
+      IF lo_note->get_father( ) IS INITIAL.
+        rv_root_node = lo_note->get_uuid( ).
+        EXIT.
+      ENDIF.
+    ENDLOOP.
   ENDMETHOD.
 
 

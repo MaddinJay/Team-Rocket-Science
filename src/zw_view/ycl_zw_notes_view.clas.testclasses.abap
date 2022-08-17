@@ -22,11 +22,6 @@ CLASS ltcl_notes_tree IMPLEMENTATION.
 
   METHOD setup.
     mo_notes ?= cl_abap_testdouble=>create( 'yif_zw_notes_list' ).
-    cl_abap_testdouble=>configure_call( mo_notes )->returning( VALUE yif_zw_notes_list=>tt_relations( ( uuid = '123400000000' node = 'ZW' father = '' )
-                                                                                                     ( uuid = '123500000000' node = 'Node1' father = '123400000000' )
-                                                                                                     ( uuid = '123600000000' node = 'Node2' father = '123400000000' )
-                                                                                                     ( uuid = '123700000000' node = 'Node3' father = '123600000000' ) ) ).
-    mo_notes->get_relations( ).
 
     cl_abap_testdouble=>configure_call( mo_notes )->returning( VALUE yif_zw_note=>tt_notes( ( NEW ycl_zw_note( '123400000000' ) )
                                                                                             ( NEW ycl_zw_note( '123500000000' ) )
