@@ -10,7 +10,7 @@ ENDCLASS.
 CLASS ycl_zw_note_dao IMPLEMENTATION.
 
   METHOD yif_zw_note_dao~read_notes.
-    SELECT * FROM yzw_t_notes INTO TABLE @DATA(lt_notes).
+    SELECT * FROM yzw_t_notes INTO TABLE @rt_notes.
   ENDMETHOD.
 
 ENDCLASS.

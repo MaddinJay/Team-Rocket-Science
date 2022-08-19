@@ -1,7 +1,7 @@
 CLASS ycl_zw_gui_controller DEFINITION PUBLIC CREATE PUBLIC .
 
   PUBLIC SECTION.
-    INTERFACES: yif_zw_gui_controller.
+    INTERFACES yif_zw_gui_controller.
 
     METHODS constructor.
 

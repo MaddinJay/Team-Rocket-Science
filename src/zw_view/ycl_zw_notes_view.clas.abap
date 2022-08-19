@@ -21,7 +21,7 @@ CLASS ycl_zw_notes_view DEFINITION
     METHODS build_tree_nodes       RETURNING VALUE(rt_nodes) TYPE yif_zw_view_types=>tt_tree_nodes.
     METHODS is_folder              IMPORTING iv_father           TYPE yif_zw_note_types=>ty_uuid
                                    RETURNING VALUE(rv_is_folder) TYPE abap_bool.
-    METHODS determine_relationship IMPORTING iv_father          TYPE yif_note_dao=>ty_uuid
+    METHODS determine_relationship IMPORTING iv_father          TYPE yif_zw_note_types=>ty_uuid
                                    RETURNING VALUE(rv_is_child) TYPE int4.
     METHODS add_nodes.
     METHODS get_root_node          RETURNING VALUE(rv_root_node) TYPE tv_nodekey.
