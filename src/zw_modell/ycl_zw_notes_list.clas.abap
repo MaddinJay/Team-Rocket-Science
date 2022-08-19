@@ -4,16 +4,16 @@ CLASS ycl_zw_notes_list DEFINITION
 
   PUBLIC SECTION.
     INTERFACES: yif_zw_notes_list.
+
     METHODS constructor IMPORTING io_notes_dao TYPE REF TO yif_zw_note_dao OPTIONAL.
 
   PRIVATE SECTION.
-    DATA mt_notes TYPE yif_zw_note=>tt_notes.
+    DATA mt_notes TYPE yif_zw_note_types=>tt_notes.
     DATA mo_note_dao TYPE REF TO yif_zw_note_dao.
 
     METHODS build_notes.
 
 ENDCLASS.
-
 
 CLASS ycl_zw_notes_list IMPLEMENTATION.
 

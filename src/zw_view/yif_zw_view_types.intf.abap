@@ -1,0 +1,5 @@
+INTERFACE yif_zw_view_types
+  PUBLIC .
+
+  TYPES: tt_tree_nodes TYPE STANDARD TABLE OF node_str WITH DEFAULT KEY.
+ENDINTERFACE.

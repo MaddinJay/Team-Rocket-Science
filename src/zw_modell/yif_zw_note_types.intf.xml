@@ -3,9 +3,9 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOINTERF>
-    <CLSNAME>YIF_NOTE_DAO</CLSNAME>
+    <CLSNAME>YIF_ZW_NOTE_TYPES</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>ZW Note DAO</DESCRIPT>
+    <DESCRIPT>ZW Note Types</DESCRIPT>
     <EXPOSURE>2</EXPOSURE>
     <STATE>1</STATE>
     <UNICODE>X</UNICODE>

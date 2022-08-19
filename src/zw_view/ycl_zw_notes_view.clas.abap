@@ -3,27 +3,23 @@ CLASS ycl_zw_notes_view DEFINITION
   CREATE PUBLIC .
 
   PUBLIC SECTION.
-
     INTERFACES yif_zw_notes_view .
 
     METHODS constructor IMPORTING io_controller TYPE REF TO yif_zw_notes_list .
 
   PRIVATE SECTION.
-    TYPES: tt_tree_nodes TYPE STANDARD TABLE OF node_str WITH DEFAULT KEY.
-
     CONSTANTS mc_tree_container      TYPE char14 VALUE 'TREE_CONTAINER' ##NO_TEXT.
     CONSTANTS mc_tree_node_strcuture TYPE x030l-tabname VALUE 'NODE_STR'.
 
     DATA mo_gui_tree     TYPE REF TO cl_gui_simple_tree.
-    DATA mo_nodes        TYPE REF TO yif_zw_notes_list.
+    DATA mo_notes        TYPE REF TO yif_zw_notes_list.
     DATA mo_application  TYPE REF TO lcl_tree_application.
-    DATA mt_tree_nodes   TYPE tt_tree_nodes.
-    DATA mt_fieldcatalog TYPE lvc_t_fcat.
+    DATA mt_notes        TYPE yif_zw_note_types=>tt_notes.
 
     METHODS create_initial_gui_column_tree.
     METHODS build_costum_container RETURNING VALUE(ro_custom_container) TYPE REF TO cl_gui_custom_container.
-    METHODS build_tree_nodes       RETURNING VALUE(rt_nodes) TYPE tt_tree_nodes.
-    METHODS is_folder              IMPORTING iv_father           TYPE yif_note_dao=>ty_uuid
+    METHODS build_tree_nodes       RETURNING VALUE(rt_nodes) TYPE yif_zw_view_types=>tt_tree_nodes.
+    METHODS is_folder              IMPORTING iv_father           TYPE yif_zw_note_types=>ty_uuid
                                    RETURNING VALUE(rv_is_folder) TYPE abap_bool.
     METHODS determine_relationship IMPORTING iv_father          TYPE yif_note_dao=>ty_uuid
                                    RETURNING VALUE(rv_is_child) TYPE int4.
@@ -31,16 +27,20 @@ CLASS ycl_zw_notes_view DEFINITION
     METHODS get_root_node          RETURNING VALUE(rv_root_node) TYPE tv_nodekey.
     METHODS expand_node.
     METHODS add_event_handler.
-    METHODS create_event_double_click
-      RETURNING
-        VALUE(rs_event) TYPE cntl_simple_event.
+    METHODS create_event_double_click RETURNING VALUE(rs_event) TYPE cntl_simple_event.
+    METHODS set_notes.
 
 ENDCLASS.
 
 CLASS ycl_zw_notes_view IMPLEMENTATION.
 
   METHOD constructor.
-    mo_nodes = io_controller.
+    mo_notes = io_controller.
+    set_notes( ).
+  ENDMETHOD.
+
+  METHOD set_notes.
+    mt_notes = mo_notes->get_notes( ).
   ENDMETHOD.
 
   METHOD yif_zw_notes_view~create.
@@ -55,13 +55,11 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD build_tree_nodes.
-    DATA(lt_notes)     = mo_nodes->get_notes( ).
-
-    rt_nodes = VALUE #( FOR <note> IN lt_notes:
-                        ( node_key = <note>->get_uuid( )
-                          text     = <note>->get_title( )
-                          isfolder = is_folder( <note>->get_father( ) )
-                          relatkey = <note>->get_father( )
+    rt_nodes = VALUE #( FOR <note> IN mt_notes:
+                        ( node_key  = <note>->get_uuid( )
+                          text      = <note>->get_title( )
+                          isfolder  = is_folder( <note>->get_uuid( ) )
+                          relatkey  = <note>->get_father( )
                           relatship = determine_relationship( <note>->get_father( ) ) ) ).
   ENDMETHOD.
 
@@ -77,7 +75,12 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD is_folder.
-    rv_is_folder = xsdbool( iv_father IS NOT INITIAL ).
+    LOOP AT mt_notes INTO DATA(lo_note).
+      IF lo_note->get_father( ) = iv_father.
+        rv_is_folder = abap_true.
+        RETURN.
+      ENDIF.
+    ENDLOOP.
   ENDMETHOD.
 
   METHOD determine_relationship.
@@ -91,7 +94,7 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD get_root_node.
-    DATA(lt_notes) = mo_nodes->get_notes( ).
+    DATA(lt_notes) = mo_notes->get_notes( ).
     LOOP AT lt_notes INTO DATA(lo_note).
       IF lo_note->get_father( ) IS INITIAL.
         rv_root_node = lo_note->get_uuid( ).
@@ -99,7 +102,6 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
       ENDIF.
     ENDLOOP.
   ENDMETHOD.
-
 
   METHOD add_event_handler.
     DATA lt_events TYPE cntl_simple_events.
@@ -109,10 +111,9 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
     mo_gui_tree->set_registered_events( events = lt_events ).
     ##TODO " Exception abfangen
 
-    mo_application = NEW #( mo_nodes ).
+    mo_application = NEW #( mo_notes ).
     SET HANDLER mo_application->handle_node_double_click FOR mo_gui_tree.
   ENDMETHOD.
-
 
   METHOD create_event_double_click.
     rs_event = VALUE cntl_simple_event( eventid    = cl_gui_simple_tree=>eventid_node_double_click
