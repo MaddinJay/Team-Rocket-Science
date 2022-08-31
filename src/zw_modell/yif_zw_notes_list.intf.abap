@@ -1,5 +1,5 @@
 INTERFACE yif_zw_notes_list
-  PUBLIC .
+  PUBLIC.
 
   METHODS create_notes.
   METHODS get_relations RETURNING VALUE(rt_relations) TYPE yzw_tt_relations.

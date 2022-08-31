@@ -48,8 +48,11 @@ CLASS ycl_zw_notes_list IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD build_notes_list.
+    DATA lo_note TYPE REF TO yif_zw_note.
+
     LOOP AT it_notes INTO DATA(ls_note).
-      APPEND NEW ycl_zw_note( ls_note ) TO mt_notes.
+      lo_note = NEW ycl_zw_note( ls_note ).
+      APPEND lo_note TO mt_notes.
     ENDLOOP.
   ENDMETHOD.
 
