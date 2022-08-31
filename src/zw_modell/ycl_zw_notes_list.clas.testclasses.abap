@@ -27,6 +27,7 @@ CLASS ltcl_notes_list IMPLEMENTATION.
     mo_notes_dao->read_notes( ).
 
     mo_cut = NEW ycl_zw_notes_list( mo_notes_dao ).
+    mo_cut->create_notes( ).
   ENDMETHOD.
 
   METHOD building_notes_ok.

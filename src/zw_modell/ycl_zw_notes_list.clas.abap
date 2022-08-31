@@ -11,7 +11,7 @@ CLASS ycl_zw_notes_list DEFINITION
     DATA mt_notes TYPE yif_zw_note_types=>tt_notes.
     DATA mo_note_dao TYPE REF TO yif_zw_note_dao.
 
-    METHODS build_notes.
+    METHODS build_notes_list IMPORTING it_notes TYPE yzw_tt_notes.
 
 ENDCLASS.
 
@@ -20,7 +20,6 @@ CLASS ycl_zw_notes_list IMPLEMENTATION.
   METHOD constructor.
     mo_note_dao = COND #( WHEN io_notes_dao IS BOUND THEN io_notes_dao
                           ELSE NEW ycl_zw_note_dao( ) ).
-    build_notes( ).
   ENDMETHOD.
 
   METHOD yif_zw_notes_list~get_notes.
@@ -43,14 +42,14 @@ CLASS ycl_zw_notes_list IMPLEMENTATION.
     ENDLOOP.
   ENDMETHOD.
 
-  METHOD build_notes.
+  METHOD yif_zw_notes_list~create_notes.
     DATA(lt_notes) = mo_note_dao->read_notes( ).
-    LOOP AT lt_notes INTO DATA(ls_note).
-      DATA(lo_note) = NEW ycl_zw_note( iv_uuid = ls_note-uuid ).
-      lo_note->yif_zw_note~set_title( ls_note-title ).
-      lo_note->yif_zw_note~set_body( ls_note-body ).
-      lo_note->yif_zw_note~set_father( ls_note-father ).
-      APPEND lo_note TO mt_notes.
+    build_notes_list( lt_notes ).
+  ENDMETHOD.
+
+  METHOD build_notes_list.
+    LOOP AT it_notes INTO DATA(ls_note).
+      APPEND NEW ycl_zw_note( ls_note ) TO mt_notes.
     ENDLOOP.
   ENDMETHOD.
 
