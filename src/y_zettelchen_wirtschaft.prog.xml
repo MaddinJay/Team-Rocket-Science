@@ -36,35 +36,31 @@
        <LENGTH>058</LENGTH>
        <HEIGHT>037</HEIGHT>
       </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>CUST_CTRL</TYPE>
+       <NAME>YZW_NOTE_INFORMATIONS-BODY</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>003</LINE>
+       <COLUMN>060</COLUMN>
+       <LENGTH>118</LENGTH>
+       <HEIGHT>034</HEIGHT>
+      </RPY_DYCATT>
      </CONTAINERS>
      <FIELDS>
       <RPY_DYFATC>
        <CONT_TYPE>SCREEN</CONT_TYPE>
        <CONT_NAME>SCREEN</CONT_NAME>
-       <TYPE>TEXT</TYPE>
-       <NAME>NOTE_TITLE</NAME>
-       <TEXT>Test</TEXT>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>YZW_NOTE_INFORMATIONS-TITLE</NAME>
+       <TEXT>______________________________________________________________________________________________________________________</TEXT>
        <LINE>001</LINE>
        <COLUMN>060</COLUMN>
-       <LENGTH>004</LENGTH>
-       <VISLENGTH>004</VISLENGTH>
+       <LENGTH>118</LENGTH>
+       <VISLENGTH>118</VISLENGTH>
        <HEIGHT>001</HEIGHT>
        <FORMAT>CHAR</FORMAT>
-       <REQU_ENTRY>N</REQU_ENTRY>
-      </RPY_DYFATC>
-      <RPY_DYFATC>
-       <CONT_TYPE>SCREEN</CONT_TYPE>
-       <CONT_NAME>SCREEN</CONT_NAME>
-       <TYPE>TEXT</TYPE>
-       <NAME>NOTE_BODY</NAME>
-       <TEXT>Body-Text</TEXT>
-       <LINE>003</LINE>
-       <COLUMN>060</COLUMN>
-       <LENGTH>009</LENGTH>
-       <VISLENGTH>009</VISLENGTH>
-       <HEIGHT>001</HEIGHT>
-       <FORMAT>CHAR</FORMAT>
-       <REQU_ENTRY>N</REQU_ENTRY>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
       </RPY_DYFATC>
       <RPY_DYFATC>
        <CONT_TYPE>SCREEN</CONT_TYPE>

@@ -3,8 +3,8 @@ CLASS ltc_note DEFINITION FINAL FOR TESTING
   RISK LEVEL HARMLESS.
 
   PRIVATE SECTION.
-    DATA:
-      mo_cut      TYPE REF TO yif_zw_note.
+    DATA mo_cut      TYPE REF TO yif_zw_note.
+
     METHODS:
       setup,
       get_uuid  FOR TESTING,
