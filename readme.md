@@ -65,3 +65,15 @@ Highlights:
 - Refactoring Notes List Class: Handling der Relations in View-Class ausgelagert (Nicht Domain relevant)
 - Refactoring View Class: Geänderte Zugriff aug Note Objekte
 - Einführung Type-Interfaces für Domaine Note und Tree View
+
+# Week 7
+Goals:
+- Refactoring Domain Logik: Integriere Types Interfaces, Refactoring Communication zwischen Classes
+- Subscreen Integration zur Visualisierung von Note Informationen
+- Walking Skeleton abschliessen: Double Click -> Subscreen -> Change -> Save -> Reopen
+- ABAPLint Messages bereinigen
+
+Highlights:
+- Einführung Types Intrefaces
+- Refactoring Communication Notes Classes
+- Erarbeitung Deep Dive Integration von Notes Informationen in Container in Main Screen
