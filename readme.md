@@ -73,7 +73,9 @@ Goals:
 - Walking Skeleton abschliessen: Double Click -> Subscreen -> Change -> Save -> Reopen
 - ABAPLint Messages bereinigen
 
+
 Highlights:
 - Einführung Types Intrefaces
 - Refactoring Communication Notes Classes
 - Erarbeitung Deep Dive Integration von Notes Informationen in Container in Main Screen
+- Subscreen Integration zur Visualisierung von Note Informationen
