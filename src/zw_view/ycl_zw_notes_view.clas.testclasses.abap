@@ -37,24 +37,24 @@ CLASS ltcl_notes_tree IMPLEMENTATION.
 
   METHOD create_mock_notes.
 
-    DATA(lo_note) = NEW ycl_zw_note( '123400000000' ).
-    lo_note->yif_zw_note~set_title( 'ZW' ).
-    lo_note->yif_zw_note~set_father( '000000000000' ).
+    DATA(lo_note) = NEW ycl_zw_note( VALUE #( uuid   = '123400000000'
+                                              title  = 'ZW'
+                                              father = '000000000000'   ) ).
     APPEND lo_note TO rt_notes.
 
-    lo_note = NEW ycl_zw_note( '123500000000' ).
-    lo_note->yif_zw_note~set_title( 'Node1' ).
-    lo_note->yif_zw_note~set_father( '123400000000' ).
+    lo_note = NEW ycl_zw_note( VALUE #( uuid   = '123500000000'
+                                        title  = 'Node1'
+                                        father = '123400000000' ) ).
     APPEND lo_note TO rt_notes.
 
-    lo_note = NEW ycl_zw_note( '123600000000' ).
-    lo_note->yif_zw_note~set_title( 'Node2' ).
-    lo_note->yif_zw_note~set_father( '123400000000' ).
+    lo_note = NEW ycl_zw_note( VALUE #( uuid   = '123600000000'
+                                        title  = 'Node2'
+                                        father = '123400000000' ) ).
     APPEND lo_note TO rt_notes.
 
-    lo_note = NEW ycl_zw_note( '123700000000' ).
-    lo_note->yif_zw_note~set_title( 'Node3' ).
-    lo_note->yif_zw_note~set_father( '123600000000' ).
+    lo_note = NEW ycl_zw_note( VALUE #( uuid   = '123700000000'
+                                        title  = 'Node3'
+                                        father = '12360000000') ).
     APPEND lo_note TO rt_notes.
 
   ENDMETHOD.

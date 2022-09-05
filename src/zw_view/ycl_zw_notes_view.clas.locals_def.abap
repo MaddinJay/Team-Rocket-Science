@@ -11,5 +11,6 @@ CLASS lcl_tree_application DEFINITION.
 
   PRIVATE SECTION.
     DATA mo_notes_list TYPE REF TO yif_zw_notes_list.
+    DATA mo_note_view TYPE REF TO yif_zw_note_view.
 
 ENDCLASS.

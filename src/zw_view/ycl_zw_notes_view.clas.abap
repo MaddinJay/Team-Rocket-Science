@@ -32,76 +32,10 @@ CLASS ycl_zw_notes_view DEFINITION
 
 ENDCLASS.
 
-CLASS ycl_zw_notes_view IMPLEMENTATION.
 
-  METHOD constructor.
-    mo_notes = io_controller.
-    set_notes( ).
-  ENDMETHOD.
 
-  METHOD set_notes.
-    mt_notes = mo_notes->get_notes( ).
-  ENDMETHOD.
+CLASS YCL_ZW_NOTES_VIEW IMPLEMENTATION.
 
-  METHOD yif_zw_notes_view~create.
-    create_initial_gui_column_tree( ).
-    add_event_handler( ).
-    add_nodes( ).
-    expand_node( ).
-  ENDMETHOD.
-
-  METHOD build_costum_container.
-    ro_custom_container = NEW #( container_name = mc_tree_container ).
-  ENDMETHOD.
-
-  METHOD build_tree_nodes.
-    rt_nodes = VALUE #( FOR <note> IN mt_notes:
-                        ( node_key  = <note>->get_uuid( )
-                          text      = <note>->get_title( )
-                          isfolder  = is_folder( <note>->get_uuid( ) )
-                          relatkey  = <note>->get_father( )
-                          relatship = determine_relationship( <note>->get_father( ) ) ) ).
-  ENDMETHOD.
-
-  METHOD create_initial_gui_column_tree.
-    CREATE OBJECT mo_gui_tree
-      EXPORTING
-        parent              = build_costum_container( )
-        node_selection_mode = mo_gui_tree->node_sel_mode_single.
-  ENDMETHOD.
-
-  METHOD expand_node.
-    mo_gui_tree->expand_node( get_root_node( ) ).
-  ENDMETHOD.
-
-  METHOD is_folder.
-    LOOP AT mt_notes INTO DATA(lo_note).
-      IF lo_note->get_father( ) = iv_father.
-        rv_is_folder = abap_true.
-        RETURN.
-      ENDIF.
-    ENDLOOP.
-  ENDMETHOD.
-
-  METHOD determine_relationship.
-    rv_is_child = COND #( WHEN iv_father IS NOT INITIAL THEN cl_gui_simple_tree=>relat_last_child ).
-  ENDMETHOD.
-
-  METHOD add_nodes.
-    mo_gui_tree->add_nodes(
-        node_table           = build_tree_nodes( )
-        table_structure_name = mc_tree_node_strcuture ).
-  ENDMETHOD.
-
-  METHOD get_root_node.
-    DATA(lt_notes) = mo_notes->get_notes( ).
-    LOOP AT lt_notes INTO DATA(lo_note).
-      IF lo_note->get_father( ) IS INITIAL.
-        rv_root_node = lo_note->get_uuid( ).
-        EXIT.
-      ENDIF.
-    ENDLOOP.
-  ENDMETHOD.
 
   METHOD add_event_handler.
     DATA lt_events TYPE cntl_simple_events.
@@ -115,9 +49,90 @@ CLASS ycl_zw_notes_view IMPLEMENTATION.
     SET HANDLER mo_application->handle_node_double_click FOR mo_gui_tree.
   ENDMETHOD.
 
+
+  METHOD add_nodes.
+    mo_gui_tree->add_nodes(
+        node_table           = build_tree_nodes( )
+        table_structure_name = mc_tree_node_strcuture ).
+  ENDMETHOD.
+
+
+  METHOD build_costum_container.
+    ro_custom_container = NEW #( container_name = mc_tree_container ).
+  ENDMETHOD.
+
+
+  METHOD build_tree_nodes.
+    rt_nodes = VALUE #( FOR <note> IN mt_notes:
+                        ( node_key  = <note>->get_uuid( )
+                          text      = <note>->get_title( )
+                          isfolder  = is_folder( <note>->get_uuid( ) )
+                          relatkey  = <note>->get_father( )
+                          relatship = determine_relationship( <note>->get_father( ) ) ) ).
+  ENDMETHOD.
+
+
+  METHOD constructor.
+    mo_notes = io_controller.
+    set_notes( ).
+  ENDMETHOD.
+
+
   METHOD create_event_double_click.
     rs_event = VALUE cntl_simple_event( eventid    = cl_gui_simple_tree=>eventid_node_double_click
                                         appl_event = abap_true ).
   ENDMETHOD.
 
+
+  METHOD create_initial_gui_column_tree.
+    CREATE OBJECT mo_gui_tree
+      EXPORTING
+        parent              = build_costum_container( )
+        node_selection_mode = mo_gui_tree->node_sel_mode_single.
+  ENDMETHOD.
+
+
+  METHOD determine_relationship.
+    rv_is_child = COND #( WHEN iv_father IS NOT INITIAL THEN cl_gui_simple_tree=>relat_last_child ).
+  ENDMETHOD.
+
+
+  METHOD expand_node.
+    mo_gui_tree->expand_node( get_root_node( ) ).
+  ENDMETHOD.
+
+
+  METHOD get_root_node.
+    DATA(lt_notes) = mo_notes->get_notes( ).
+    LOOP AT lt_notes INTO DATA(lo_note).
+      IF lo_note->get_father( ) IS INITIAL.
+        rv_root_node = lo_note->get_uuid( ).
+        EXIT.
+      ENDIF.
+    ENDLOOP.
+  ENDMETHOD.
+
+
+  METHOD is_folder.
+    LOOP AT mt_notes INTO DATA(lo_note).
+      IF lo_note->get_father( ) = iv_father.
+        rv_is_folder = abap_true.
+        RETURN.
+      ENDIF.
+    ENDLOOP.
+  ENDMETHOD.
+
+
+  METHOD set_notes.
+    mt_notes = mo_notes->get_notes( ).
+  ENDMETHOD.
+
+
+  METHOD yif_zw_notes_view~create.
+    CHECK mo_gui_tree IS NOT BOUND.
+    create_initial_gui_column_tree( ).
+    add_event_handler( ).
+    add_nodes( ).
+    expand_node( ).
+  ENDMETHOD.
 ENDCLASS.

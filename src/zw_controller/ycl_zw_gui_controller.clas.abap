@@ -7,7 +7,7 @@ CLASS ycl_zw_gui_controller DEFINITION PUBLIC CREATE PUBLIC.
 
   PRIVATE SECTION.
     DATA mo_view TYPE REF TO yif_zw_notes_view.
-    DATA mo_notes TYPE REF TO ycl_zw_notes_list.
+    DATA mo_notes TYPE REF TO yif_zw_notes_list.
 
 ENDCLASS.
 
@@ -15,6 +15,7 @@ CLASS ycl_zw_gui_controller IMPLEMENTATION.
 
   METHOD constructor.
     mo_notes = NEW ycl_zw_notes_list( ).
+    mo_notes->create_notes( ).
     mo_view  = NEW ycl_zw_notes_view( mo_notes ).
   ENDMETHOD.
 

@@ -50,21 +50,6 @@
       <RPY_DYFATC>
        <CONT_TYPE>SCREEN</CONT_TYPE>
        <CONT_NAME>SCREEN</CONT_NAME>
-       <TYPE>TEMPLATE</TYPE>
-       <NAME>YZW_NOTE_INFORMATIONS-TITLE</NAME>
-       <TEXT>______________________________________________________________________________________________________________________</TEXT>
-       <LINE>001</LINE>
-       <COLUMN>060</COLUMN>
-       <LENGTH>118</LENGTH>
-       <VISLENGTH>118</VISLENGTH>
-       <HEIGHT>001</HEIGHT>
-       <FORMAT>CHAR</FORMAT>
-       <INPUT_FLD>X</INPUT_FLD>
-       <OUTPUT_FLD>X</OUTPUT_FLD>
-      </RPY_DYFATC>
-      <RPY_DYFATC>
-       <CONT_TYPE>SCREEN</CONT_TYPE>
-       <CONT_NAME>SCREEN</CONT_NAME>
        <TYPE>OKCODE</TYPE>
        <TEXT>____________________</TEXT>
        <LENGTH>020</LENGTH>
