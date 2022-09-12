@@ -25,7 +25,7 @@
   "rules": {
     "7bit_ascii": true,
     "abapdoc": false,
-    "align_parameters": true,
+    "align_parameters": false,
     "allowed_object_naming": true,
     "allowed_object_types": false,
     "ambiguous_statement": true,
