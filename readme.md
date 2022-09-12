@@ -9,7 +9,7 @@ KW
 Folgende Tabelle wird durch Christian und Damir gepflegt...
 | **Weeks**  | #1   | #2 | #3 | #4 | #5 | #6 | #7 | #8 | done  |
 |------------|------|----|----|----|----|----|----|----|---|
-| **Status** | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |  |  |   |
+| **Status** | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |  |   |
 
 **Arbeitswochen Martin:**
 KW22, KW23, KW29, KW30, KW31, KW32, KW33, KW34
@@ -79,3 +79,5 @@ Highlights:
 - Refactoring Communication Notes Classes
 - Erarbeitung Deep Dive Integration von Notes Informationen in Container in Main Screen
 - Subscreen Integration zur Visualisierung von Note Informationen
+- ABAPLint Messages bereinigt
+- Visualisierung Metrics
