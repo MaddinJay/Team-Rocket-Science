@@ -1,11 +1,12 @@
-CLASS ycl_zw_notes_view DEFINITION
+CLASS ycl_zw_tree_view DEFINITION
   PUBLIC
   CREATE PUBLIC .
 
   PUBLIC SECTION.
     INTERFACES yif_zw_notes_view .
 
-    METHODS constructor IMPORTING io_controller TYPE REF TO yif_zw_notes_list .
+    METHODS constructor IMPORTING io_notes       TYPE REF TO yif_zw_notes_list
+                                  io_views_facade TYPE REF TO yif_zw_views_facade.
 
   PRIVATE SECTION.
     CONSTANTS mc_tree_container      TYPE char14 VALUE 'TREE_CONTAINER' ##NO_TEXT.
@@ -14,7 +15,7 @@ CLASS ycl_zw_notes_view DEFINITION
     DATA mo_gui_tree     TYPE REF TO cl_gui_simple_tree.
     DATA mo_notes        TYPE REF TO yif_zw_notes_list.
     DATA mo_application  TYPE REF TO lcl_tree_application.
-    DATA mt_notes        TYPE yif_zw_note_types=>tt_notes.
+    DATA mo_views_facade  TYPE REF TO yif_zw_views_facade.
 
     METHODS create_initial_gui_column_tree.
     METHODS build_costum_container RETURNING VALUE(ro_custom_container) TYPE REF TO cl_gui_custom_container.
@@ -28,14 +29,27 @@ CLASS ycl_zw_notes_view DEFINITION
     METHODS expand_node.
     METHODS add_event_handler.
     METHODS create_event_double_click RETURNING VALUE(rs_event) TYPE cntl_simple_event.
-    METHODS set_notes.
+    METHODS set_notes                 IMPORTING io_notes_list TYPE REF TO yif_zw_notes_list.
+    METHODS set_view_facade
+      IMPORTING
+        io_views_facade TYPE REF TO yif_zw_views_facade.
 
 ENDCLASS.
 
+CLASS ycl_zw_tree_view IMPLEMENTATION.
 
+  METHOD constructor.
+    set_notes( io_notes ).
+    set_view_facade( io_views_facade ).
+  ENDMETHOD.
 
-CLASS YCL_ZW_NOTES_VIEW IMPLEMENTATION.
-
+  METHOD yif_zw_notes_view~create.
+    CHECK mo_gui_tree IS NOT BOUND.
+    create_initial_gui_column_tree( ).
+    add_event_handler( ).
+    add_nodes( ).
+    expand_node( ).
+  ENDMETHOD.
 
   METHOD add_event_handler.
     DATA lt_events TYPE cntl_simple_events.
@@ -45,10 +59,10 @@ CLASS YCL_ZW_NOTES_VIEW IMPLEMENTATION.
     mo_gui_tree->set_registered_events( events = lt_events ).
     ##TODO " Exception abfangen
 
-    mo_application = NEW #( mo_notes ).
+    mo_application = NEW #( io_notes_list = mo_notes
+                            io_view_facade = mo_views_facade ).
     SET HANDLER mo_application->handle_node_double_click FOR mo_gui_tree.
   ENDMETHOD.
-
 
   METHOD add_nodes.
     mo_gui_tree->add_nodes(
@@ -56,14 +70,12 @@ CLASS YCL_ZW_NOTES_VIEW IMPLEMENTATION.
         table_structure_name = mc_tree_node_strcuture ).
   ENDMETHOD.
 
-
   METHOD build_costum_container.
     ro_custom_container = NEW #( container_name = mc_tree_container ).
   ENDMETHOD.
 
-
   METHOD build_tree_nodes.
-    rt_nodes = VALUE #( FOR <note> IN mt_notes:
+    rt_nodes = VALUE #( FOR <note> IN mo_notes->get_notes( ):
                         ( node_key  = <note>->get_uuid( )
                           text      = <note>->get_title( )
                           isfolder  = is_folder( <note>->get_uuid( ) )
@@ -71,18 +83,10 @@ CLASS YCL_ZW_NOTES_VIEW IMPLEMENTATION.
                           relatship = determine_relationship( <note>->get_father( ) ) ) ).
   ENDMETHOD.
 
-
-  METHOD constructor.
-    mo_notes = io_controller.
-    set_notes( ).
-  ENDMETHOD.
-
-
   METHOD create_event_double_click.
     rs_event = VALUE cntl_simple_event( eventid    = cl_gui_simple_tree=>eventid_node_double_click
                                         appl_event = abap_true ).
   ENDMETHOD.
-
 
   METHOD create_initial_gui_column_tree.
     CREATE OBJECT mo_gui_tree
@@ -91,16 +95,13 @@ CLASS YCL_ZW_NOTES_VIEW IMPLEMENTATION.
         node_selection_mode = mo_gui_tree->node_sel_mode_single.
   ENDMETHOD.
 
-
   METHOD determine_relationship.
     rv_is_child = COND #( WHEN iv_father IS NOT INITIAL THEN cl_gui_simple_tree=>relat_last_child ).
   ENDMETHOD.
 
-
   METHOD expand_node.
     mo_gui_tree->expand_node( get_root_node( ) ).
   ENDMETHOD.
-
 
   METHOD get_root_node.
     DATA(lt_notes) = mo_notes->get_notes( ).
@@ -112,9 +113,8 @@ CLASS YCL_ZW_NOTES_VIEW IMPLEMENTATION.
     ENDLOOP.
   ENDMETHOD.
 
-
   METHOD is_folder.
-    LOOP AT mt_notes INTO DATA(lo_note).
+    LOOP AT mo_notes->get_notes( ) INTO DATA(lo_note).
       IF lo_note->get_father( ) = iv_father.
         rv_is_folder = abap_true.
         RETURN.
@@ -122,17 +122,12 @@ CLASS YCL_ZW_NOTES_VIEW IMPLEMENTATION.
     ENDLOOP.
   ENDMETHOD.
 
-
   METHOD set_notes.
-    mt_notes = mo_notes->get_notes( ).
+    mo_notes = io_notes_list.
   ENDMETHOD.
 
-
-  METHOD yif_zw_notes_view~create.
-    CHECK mo_gui_tree IS NOT BOUND.
-    create_initial_gui_column_tree( ).
-    add_event_handler( ).
-    add_nodes( ).
-    expand_node( ).
+  METHOD set_view_facade.
+    mo_views_facade = io_views_facade.
   ENDMETHOD.
+
 ENDCLASS.

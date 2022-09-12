@@ -1,12 +1,12 @@
 CLASS ltcl_notes_tree DEFINITION DEFERRED.
-CLASS ycl_zw_notes_view DEFINITION LOCAL FRIENDS ltcl_notes_tree.
+CLASS ycl_zw_tree_view DEFINITION LOCAL FRIENDS ltcl_notes_tree.
 
 CLASS ltcl_notes_tree DEFINITION FINAL FOR TESTING
   DURATION SHORT
   RISK LEVEL HARMLESS.
 
   PRIVATE SECTION.
-    DATA mo_cut TYPE REF TO ycl_zw_notes_view.
+    DATA mo_cut TYPE REF TO ycl_zw_tree_view.
     DATA mo_notes TYPE REF TO yif_zw_notes_list.
 
     METHODS:
@@ -32,7 +32,8 @@ CLASS ltcl_notes_tree IMPLEMENTATION.
     cl_abap_testdouble=>configure_call( mo_notes )->returning( lt_notes ).
     mo_notes->get_notes( ).
 
-    mo_cut = NEW #( mo_notes ).
+    mo_cut = NEW #( io_notes = mo_notes
+                    io_views_facade = NEW ycl_zw_views_facade( ) ).
   ENDMETHOD.
 
   METHOD create_mock_notes.

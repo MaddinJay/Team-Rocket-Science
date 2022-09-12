@@ -3,7 +3,7 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <PROGDIR>
-    <NAME>Y_ZETTELCHEN_WIRTSCHAFT</NAME>
+    <NAME>Y_ZW_ZETTELCHEN_WIRTSCHAFT</NAME>
     <DBAPL>S</DBAPL>
     <SUBC>1</SUBC>
     <FIXPT>X</FIXPT>
@@ -13,9 +13,9 @@
    <DYNPROS>
     <item>
      <HEADER>
-      <PROGRAM>Y_ZETTELCHEN_WIRTSCHAFT</PROGRAM>
+      <PROGRAM>Y_ZW_ZETTELCHEN_WIRTSCHAFT</PROGRAM>
       <SCREEN>0100</SCREEN>
-      <LANGUAGE>D</LANGUAGE>
+      <LANGUAGE>E</LANGUAGE>
       <DESCRIPT>GUI zur Zettelchen-Wirtschaft</DESCRIPT>
       <TYPE>N</TYPE>
       <NEXTSCREEN>0100</NEXTSCREEN>
@@ -99,21 +99,21 @@
       <CODE>EXIT</CODE>
       <TEXTNO>001</TEXTNO>
       <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Zurück</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>EXIT</CODE>
+      <TEXTNO>002</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
       <TEXT_NAME>ICON_CANCEL</TEXT_NAME>
       <ICON_ID>@0W@</ICON_ID>
       <FUN_TEXT>Abbrechen</FUN_TEXT>
      </RSMPE_FUNT>
      <RSMPE_FUNT>
       <CODE>EXIT</CODE>
-      <TEXTNO>002</TEXTNO>
-      <TEXT_TYPE>S</TEXT_TYPE>
-      <FUN_TEXT>Beenden</FUN_TEXT>
-     </RSMPE_FUNT>
-     <RSMPE_FUNT>
-      <CODE>EXIT</CODE>
       <TEXTNO>003</TEXTNO>
       <TEXT_TYPE>S</TEXT_TYPE>
-      <FUN_TEXT>Zurück</FUN_TEXT>
+      <FUN_TEXT>Beenden</FUN_TEXT>
      </RSMPE_FUNT>
     </FUN>
     <BUT>
@@ -129,19 +129,19 @@
       <CODE>000001</CODE>
       <PFNO>03</PFNO>
       <FUNCODE>EXIT</FUNCODE>
-      <FUNNO>003</FUNNO>
+      <FUNNO>001</FUNNO>
      </RSMPE_PFK>
      <RSMPE_PFK>
       <CODE>000001</CODE>
       <PFNO>12</PFNO>
       <FUNCODE>EXIT</FUNCODE>
-      <FUNNO>001</FUNNO>
+      <FUNNO>002</FUNNO>
      </RSMPE_PFK>
      <RSMPE_PFK>
       <CODE>000001</CODE>
       <PFNO>15</PFNO>
       <FUNCODE>EXIT</FUNCODE>
-      <FUNNO>002</FUNNO>
+      <FUNNO>003</FUNNO>
      </RSMPE_PFK>
     </PFK>
     <SET>
@@ -178,13 +178,18 @@
      </RSMPE_TITT>
     </TIT>
    </CUA>
-   <TPOOL>
+   <I18N_TPOOL>
     <item>
-     <ID>R</ID>
-     <ENTRY>Projekt Zettelchen-Wirtschaft</ENTRY>
-     <LENGTH>29</LENGTH>
+     <LANGUAGE>E</LANGUAGE>
+     <TEXTPOOL>
+      <item>
+       <ID>R</ID>
+       <ENTRY>ZW Zettelchen Wirtschaft</ENTRY>
+       <LENGTH>24</LENGTH>
+      </item>
+     </TEXTPOOL>
     </item>
-   </TPOOL>
+   </I18N_TPOOL>
   </asx:values>
  </asx:abap>
 </abapGit>
