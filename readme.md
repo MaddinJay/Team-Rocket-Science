@@ -79,5 +79,14 @@ Highlights:
 - Refactoring Communication Notes Classes
 - Erarbeitung Deep Dive Integration von Notes Informationen in Container in Main Screen
 - Subscreen Integration zur Visualisierung von Note Informationen
-- ABAPLint Messages bereinigt
-- Visualisierung Metrics
+- ABAPLint Messages bereinigt (noch offene)
+
+# Week 8
+Goals:
+- Einführung Visualisierung Metrics und Test Coverage
+- ABAPLint: Unrelevante Prüfungen ausstellen und Fehlerliste clean haben
+- Save Funktion, wenn Note geändert (Walking Skeleton beenden)
+
+Highlights:
+- Visualisierung Metrics für vorherige Wochen
+- ABAPLint Regelverfeinerung
