@@ -10,10 +10,7 @@ ENDCLASS.
 CLASS ycl_zw_note_dao IMPLEMENTATION.
 
   METHOD yif_zw_note_dao~read_notes.
-    SELECT * FROM yzw_t_notes INTO TABLE @rt_notes.
-    IF sy-subrc <> 0.
-      " Nothing to do -> Notes View empty
-    ENDIF.
+    SELECT * FROM yzw_t_notes INTO TABLE @rt_notes. " ##NO_SUBRC
   ENDMETHOD.
 
 ENDCLASS.
