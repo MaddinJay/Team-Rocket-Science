@@ -13,23 +13,19 @@ CLASS ycl_zw_note DEFINITION
     DATA mv_body   TYPE yif_zw_note_types=>ty_body.
     DATA mv_father TYPE yif_zw_note_types=>ty_uuid.
 
-    METHODS set_uuid      IMPORTING iv_uuid TYPE yif_zw_note_types=>ty_uuid.
-    METHODS set_title     IMPORTING iv_title      TYPE yif_zw_note_types=>ty_title.
-    METHODS set_body      IMPORTING iv_body       TYPE yif_zw_note_types=>ty_body.
-    METHODS set_father    IMPORTING iv_father     TYPE yif_zw_note_types=>ty_uuid.
-
 ENDCLASS.
 
 CLASS ycl_zw_note IMPLEMENTATION.
 
   METHOD constructor.
-    set_uuid( is_note_informations-uuid ).
-    set_title( is_note_informations-title ).
-    set_body( is_note_informations-body ).
-    set_father( is_note_informations-father ).
+    ##TODO " Konstrukt mit SET in Constructor überdenken
+    yif_zw_note~set_uuid( is_note_informations-uuid ).
+    yif_zw_note~set_title( is_note_informations-title ).
+    yif_zw_note~set_body( is_note_informations-body ).
+    yif_zw_note~set_father( is_note_informations-father ).
   ENDMETHOD.
 
-  METHOD set_uuid.
+  METHOD yif_zw_note~set_uuid.
     mv_uuid = iv_uuid.
   ENDMETHOD.
 
@@ -45,11 +41,11 @@ CLASS ycl_zw_note IMPLEMENTATION.
     rv_uuid = mv_uuid.
   ENDMETHOD.
 
-  METHOD set_title.
+  METHOD yif_zw_note~set_title.
     mv_title = iv_title.
   ENDMETHOD.
 
-  METHOD set_body.
+  METHOD yif_zw_note~set_body.
     mv_body = iv_body.
   ENDMETHOD.
 
@@ -57,7 +53,7 @@ CLASS ycl_zw_note IMPLEMENTATION.
     rv_father = mv_father.
   ENDMETHOD.
 
-  METHOD set_father.
+  METHOD yif_zw_note~set_father.
     mv_father = iv_father.
   ENDMETHOD.
 

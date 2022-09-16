@@ -10,6 +10,26 @@
     <STATE>1</STATE>
     <UNICODE>X</UNICODE>
    </VSEOINTERF>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>YIF_ZW_VIEWS_FACADE</CLSNAME>
+     <CMPNAME>CREATE_NOTE_VIEW</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create the Note View for visualization of the seelcted Note</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>YIF_ZW_VIEWS_FACADE</CLSNAME>
+     <CMPNAME>CREATE_TREE_VIEW</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create the Tree View of the Zettelchen-Wirtschaft GUI</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>YIF_ZW_VIEWS_FACADE</CLSNAME>
+     <CMPNAME>UPDATE_PROCESSED_NOTE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Read the Note that is visualized in the Subscreen</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
   </asx:values>
  </asx:abap>
 </abapGit>

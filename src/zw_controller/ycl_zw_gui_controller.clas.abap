@@ -21,7 +21,7 @@ CLASS ycl_zw_gui_controller IMPLEMENTATION.
     create_views_facade( ).
   ENDMETHOD.
 
-  METHOD yif_zw_gui_controller~create_notes_view.
+  METHOD yif_zw_gui_controller~create_notes_tree_view.
     mo_views_facade->create_tree_view( mo_notes ).
   ENDMETHOD.
 
@@ -32,6 +32,11 @@ CLASS ycl_zw_gui_controller IMPLEMENTATION.
 
   METHOD create_views_facade.
     mo_views_facade = NEW ycl_zw_views_facade( ).
+  ENDMETHOD.
+
+  METHOD yif_zw_gui_controller~save_note_informations.
+    mo_views_facade->update_processed_note( ).
+    mo_notes->update_note( ).
   ENDMETHOD.
 
 ENDCLASS.

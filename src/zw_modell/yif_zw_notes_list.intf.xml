@@ -10,6 +10,32 @@
     <STATE>1</STATE>
     <UNICODE>X</UNICODE>
    </VSEOINTERF>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>YIF_ZW_NOTES_LIST</CLSNAME>
+     <CMPNAME>CREATE_NOTES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Create the List of Notes for the application</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>YIF_ZW_NOTES_LIST</CLSNAME>
+     <CMPNAME>GET_NOTE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Get one specific Note</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>YIF_ZW_NOTES_LIST</CLSNAME>
+     <CMPNAME>GET_NOTES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns the List of Notes</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>YIF_ZW_NOTES_LIST</CLSNAME>
+     <CMPNAME>UPDATE_NOTE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Update the List of Notes after User Changes</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
   </asx:values>
  </asx:abap>
 </abapGit>

@@ -7,12 +7,11 @@ CLASS ltc_note DEFINITION FINAL FOR TESTING
 
     METHODS:
       setup,
-      get_uuid  FOR TESTING,
-      get_title FOR TESTING,
-      get_body FOR TESTING,
-      get_father FOR TESTING.
+      get_uuid      FOR TESTING,
+      get_title     FOR TESTING,
+      get_body      FOR TESTING,
+      get_father    FOR TESTING.
 ENDCLASS.
-
 
 CLASS ltc_note IMPLEMENTATION.
 

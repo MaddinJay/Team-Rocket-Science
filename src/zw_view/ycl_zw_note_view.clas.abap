@@ -6,8 +6,9 @@ CLASS ycl_zw_note_view DEFINITION
     INTERFACES yif_zw_note_view.
 
   PRIVATE SECTION.
-    DATA mo_body_text_editor TYPE REF TO cl_gui_textedit.
+    DATA mo_body_text_editor  TYPE REF TO cl_gui_textedit.
     DATA mo_title_text_editor TYPE REF TO cl_gui_textedit.
+    DATA mo_note TYPE REF TO yif_zw_note.
 
     METHODS create_body_texteditor  IMPORTING io_note TYPE REF TO yif_zw_note.
 
@@ -21,6 +22,7 @@ ENDCLASS.
 CLASS ycl_zw_note_view IMPLEMENTATION.
 
   METHOD yif_zw_note_view~create.
+    mo_note = io_note.
     create_body_texteditor( io_note ).
   ENDMETHOD.
 
@@ -38,6 +40,13 @@ CLASS ycl_zw_note_view IMPLEMENTATION.
   METHOD build_text_editor_container.
     ro_container = NEW cl_gui_custom_container(
                          container_name = 'YZW_NOTE_INFORMATIONS-BODY' ).
+  ENDMETHOD.
+
+  METHOD yif_zw_note_view~update_processed_note.
+    DATA lt_text TYPE STANDARD TABLE OF char255 WITH DEFAULT KEY.
+    mo_body_text_editor->get_text_as_stream( IMPORTING text = lt_text ).
+    ##TODO " Split Title and body to transfer to note
+    mo_note->set_body( iv_body = CONV #( lt_text[ 1 ] ) ).
   ENDMETHOD.
 
 ENDCLASS.

@@ -10,23 +10,16 @@ CLASS ltcl_notes_list DEFINITION FINAL FOR TESTING
     DATA mo_notes_dao TYPE REF TO yif_zw_note_dao.
 
     METHODS:
+      setup,
       building_notes_ok FOR TESTING,
-      building_relations_ok FOR TESTING,
-      setup.
-ENDCLASS.
+      update_notes_list_ok FOR TESTING.
 
+ENDCLASS.
 
 CLASS ltcl_notes_list IMPLEMENTATION.
 
   METHOD setup.
-    mo_notes_dao ?= cl_abap_testdouble=>create( 'yif_zw_note_dao' ).
-    cl_abap_testdouble=>configure_call( mo_notes_dao )->returning( VALUE yzw_tt_notes(
-      ( uuid = '10000000000000000000000000000000' title = 'ROOT' )
-      ( uuid = '20000000000000000000000000000000' title = 'Folder' father = '10000000000000000000000000000000' )
-      ( uuid = '30000000000000000000000000000000' title = 'Note'   father = '20000000000000000000000000000000' ) ) ).
-    mo_notes_dao->read_notes( ).
-
-    mo_cut = NEW ycl_zw_notes_list( mo_notes_dao ).
+    mo_cut = NEW ycl_zw_notes_list( NEW ltd_note_dao( ) ).
     mo_cut->create_notes( ).
   ENDMETHOD.
 
@@ -36,12 +29,13 @@ CLASS ltcl_notes_list IMPLEMENTATION.
                                         act = lo_note->get_uuid( ) ).
   ENDMETHOD.
 
-  METHOD building_relations_ok.
-    cl_abap_unit_assert=>assert_equals(  exp = VALUE yzw_tt_relations(
-      (  uuid = '10000000000000000000000000000000' node = 'ROOT'   father = '000000000000' )
-      (  uuid = '20000000000000000000000000000000' node = 'Folder' father = '10000000000000000000000000000000' )
-      (  uuid = '30000000000000000000000000000000' node = 'Note'   father = '20000000000000000000000000000000' ) )
-                                         act = mo_cut->get_relations( ) ).
+  METHOD update_notes_list_ok.
+    DATA(lt_notes) = mo_cut->get_notes( ).
+    TRY.
+        mo_cut->update_note( ).
+      CATCH ycx_zw_exception INTO DATA(lo_error).
+        cl_abap_unit_assert=>fail( lo_error->get_message( ) ).
+    ENDTRY.
   ENDMETHOD.
 
 ENDCLASS.

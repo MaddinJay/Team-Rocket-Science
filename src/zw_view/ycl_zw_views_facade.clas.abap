@@ -24,4 +24,8 @@ CLASS ycl_zw_views_facade IMPLEMENTATION.
     mo_note_view->create( io_note ).
   ENDMETHOD.
 
+  METHOD yif_zw_views_facade~update_processed_note.
+    mo_note_view->update_processed_note( ).
+  ENDMETHOD.
+
 ENDCLASS.

@@ -12,6 +12,7 @@ CLASS ycl_zw_notes_list DEFINITION
     DATA mo_note_dao TYPE REF TO yif_zw_note_dao.
 
     METHODS build_notes_list IMPORTING it_notes TYPE yzw_tt_notes.
+    METHODS update_notes_list.
 
 ENDCLASS.
 
@@ -24,13 +25,6 @@ CLASS ycl_zw_notes_list IMPLEMENTATION.
 
   METHOD yif_zw_notes_list~get_notes.
     rt_notes = mt_notes.
-  ENDMETHOD.
-
-  METHOD yif_zw_notes_list~get_relations.
-    rt_relations = VALUE #( FOR <note> IN mt_notes:
-                              ( uuid   = <note>->get_uuid( )
-                                node   = <note>->get_title( )
-                                father = <note>->get_father( ) ) ).
   ENDMETHOD.
 
   METHOD yif_zw_notes_list~get_note.
@@ -54,6 +48,19 @@ CLASS ycl_zw_notes_list IMPLEMENTATION.
       lo_note = NEW ycl_zw_note( ls_note ).
       APPEND lo_note TO mt_notes.
     ENDLOOP.
+  ENDMETHOD.
+
+  METHOD yif_zw_notes_list~update_note.
+    update_notes_list( ).
+  ENDMETHOD.
+
+  METHOD update_notes_list.
+    DATA(lt_notes) = VALUE yzw_tt_notes( FOR <note> IN mt_notes:
+                                           ( uuid   = <note>->get_uuid( )
+                                             title  = <note>->get_title( )
+                                             body   = <note>->get_body( )
+                                             father = <note>->get_father( ) ) ).
+    mo_note_dao->update_notes( lt_notes ).
   ENDMETHOD.
 
 ENDCLASS.

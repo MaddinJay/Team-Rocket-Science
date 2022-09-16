@@ -10,6 +10,20 @@
     <STATE>1</STATE>
     <UNICODE>X</UNICODE>
    </VSEOINTERF>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>YIF_ZW_NOTE_DAO</CLSNAME>
+     <CMPNAME>READ_NOTES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Read Notes Informations from DB</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>YIF_ZW_NOTE_DAO</CLSNAME>
+     <CMPNAME>UPDATE_NOTES</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Update Notes Informations in DB</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
   </asx:values>
  </asx:abap>
 </abapGit>

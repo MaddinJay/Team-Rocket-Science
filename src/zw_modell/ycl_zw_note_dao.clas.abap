@@ -13,4 +13,11 @@ CLASS ycl_zw_note_dao IMPLEMENTATION.
     SELECT * FROM yzw_t_notes INTO TABLE @rt_notes. " ##NO_SUBRC
   ENDMETHOD.
 
+  METHOD yif_zw_note_dao~update_notes.
+    MODIFY yzw_t_notes FROM TABLE it_notes.
+    IF sy-subrc <> 0.
+      ##TODO " Exception Handling integrieren
+    ENDIF.
+  ENDMETHOD.
+
 ENDCLASS.
