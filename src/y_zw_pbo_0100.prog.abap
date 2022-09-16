@@ -14,5 +14,5 @@ ENDMODULE.
 *&      Module  PBO_ACTIVITIES  OUTPUT
 *&---------------------------------------------------------------------*
 MODULE pbo_activities OUTPUT.
-  go_controller->create_notes_view( ).
+  go_controller->create_notes_tree_view( ).
 ENDMODULE.

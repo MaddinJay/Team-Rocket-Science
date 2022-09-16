@@ -7,7 +7,6 @@ CLASS ltcl_notes_list DEFINITION FINAL FOR TESTING
 
   PRIVATE SECTION.
     DATA mo_cut TYPE REF TO yif_zw_notes_list.
-    DATA mo_notes_dao TYPE REF TO yif_zw_note_dao.
 
     METHODS:
       setup,
@@ -30,7 +29,6 @@ CLASS ltcl_notes_list IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD update_notes_list_ok.
-    DATA(lt_notes) = mo_cut->get_notes( ).
     TRY.
         mo_cut->update_note( ).
       CATCH ycx_zw_exception INTO DATA(lo_error).

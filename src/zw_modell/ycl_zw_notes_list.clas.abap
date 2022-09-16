@@ -1,6 +1,6 @@
 CLASS ycl_zw_notes_list DEFINITION
   PUBLIC
-  CREATE PUBLIC .
+  CREATE PUBLIC.
 
   PUBLIC SECTION.
     INTERFACES: yif_zw_notes_list.

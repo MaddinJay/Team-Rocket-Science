@@ -5,7 +5,7 @@ CLASS ycl_zw_tree_view DEFINITION
   PUBLIC SECTION.
     INTERFACES yif_zw_notes_view .
 
-    METHODS constructor IMPORTING io_notes       TYPE REF TO yif_zw_notes_list
+    METHODS constructor IMPORTING io_notes        TYPE REF TO yif_zw_notes_list
                                   io_views_facade TYPE REF TO yif_zw_views_facade.
 
   PRIVATE SECTION.
@@ -30,9 +30,7 @@ CLASS ycl_zw_tree_view DEFINITION
     METHODS add_event_handler.
     METHODS create_event_double_click RETURNING VALUE(rs_event) TYPE cntl_simple_event.
     METHODS set_notes                 IMPORTING io_notes_list TYPE REF TO yif_zw_notes_list.
-    METHODS set_view_facade
-      IMPORTING
-        io_views_facade TYPE REF TO yif_zw_views_facade.
+    METHODS set_view_facade           IMPORTING io_views_facade TYPE REF TO yif_zw_views_facade.
 
 ENDCLASS.
 

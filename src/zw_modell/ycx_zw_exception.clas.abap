@@ -2,12 +2,12 @@ CLASS ycx_zw_exception DEFINITION
   PUBLIC
   INHERITING FROM cx_no_check
   FINAL
-  CREATE PUBLIC .
+  CREATE PUBLIC.
 
   PUBLIC SECTION.
 
-    INTERFACES if_t100_dyn_msg .
-    INTERFACES if_t100_message .
+    INTERFACES if_t100_dyn_msg.
+    INTERFACES if_t100_message.
 
     METHODS constructor
       IMPORTING
@@ -21,9 +21,7 @@ CLASS ycx_zw_exception DEFINITION
 
 ENDCLASS.
 
-
-
-CLASS YCX_ZW_EXCEPTION IMPLEMENTATION.
+CLASS ycx_zw_exception IMPLEMENTATION.
 
 
   METHOD constructor ##ADT_SUPPRESS_GENERATION.
