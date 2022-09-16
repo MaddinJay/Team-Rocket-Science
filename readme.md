@@ -91,6 +91,6 @@ Highlights:
 - Visualisierung Metrics für vorherige Wochen
 - ABAPLint Regelverfeinerung
 - Einbau der Save Funktion gemäss Walking Skeleton
-- ABAPLint Meldungen clean
+- ABAPLint Meldungen CleanUp: Weiterhin offene Meldungen vorhanden
 - Refactoring Methodenbezeichnungen
 - Check Aufbau Klassen gegen Clean Object Calesthenics Principles
