@@ -9,7 +9,7 @@ KW
 Folgende Tabelle wird durch Christian und Damir gepflegt...
 | **Weeks**  | #1   | #2 | #3 | #4 | #5 | #6 | #7 | #8 | done  |
 |------------|------|----|----|----|----|----|----|----|---|
-| **Status** | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |  |   |
+| **Status** | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |   |
 
 **Arbeitswochen Martin:**
 KW22, KW23, KW29, KW30, KW31, KW32, KW33, KW34
@@ -90,3 +90,7 @@ Goals:
 Highlights:
 - Visualisierung Metrics für vorherige Wochen
 - ABAPLint Regelverfeinerung
+- Einbau der Save Funktion gemäss Walking Skeleton
+- ABAPLint Meldungen clean
+- Refactoring Methodenbezeichnungen
+- Check Aufbau Klassen gegen Clean Object Calesthenics Principles
